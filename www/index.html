@@ -50,23 +50,13 @@
             <p class="event received">Device is Ready</p>
         </div>
 
-
+<div id="googleMap" style="width:100%;height:100px;"></div>
     </div>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBfJkwgvA3XKkS5Y5dHl4gF6e5GjW56HoA&callback=myMap"></script>
     <script type="text/javascript" src="cordova.js"></script>
     <script type="text/javascript" src="js/index.js"></script>
     <script type="text/javascript">
         app.initialize();
-        function onSuccess(position) {
-var element = document.getElementById('geolocation');
-element.innerHTML = 'Latitude: ' + position.coords.latitude + '<br />' +
-'Longitude: ' + position.coords.longitude + '<br />' +
-'<hr />' + element.innerHTML;
-alert(position.coords.latitude);
-}
-function onError(error) {
-alert('code: ' + error.code + 'n' +
-'message: ' + error.message + 'n');
-}
     </script>
 </body>
 
