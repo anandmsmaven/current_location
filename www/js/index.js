@@ -60,11 +60,12 @@ var mapProp= {
     center:new google.maps.LatLng(position.coords.latitude+','+position.coords.longitude),
     zoom:5,
 };
+console.log(mapProp);
 var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
 }
       alert('Latitude: '          + position.coords.latitude          + '\n' +
          'Longitude: '         + position.coords.longitude         + '\n' +
-         'Timestamp: '         + position.timestamp                + '\n');
+         'Timestamp: '         + new Date(position.timestamp)              + '\n');
    };
 
    function onError(error) {
