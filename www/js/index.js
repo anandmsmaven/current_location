@@ -43,7 +43,27 @@ var app = {
 
         listeningElement.setAttribute('style', 'display:none;');
         receivedElement.setAttribute('style', 'display:block;');
-
+        document.getElementById("getPosition").addEventListener("click", getPosition);
         console.log('Received Event: ' + id);
+
+function getPosition()
+{
+    var options = {
+      enableHighAccuracy: true,
+      maximumAge: 3600000
+   }
+   var watchID = navigator.geolocation.getCurrentPosition(onSuccess, onError, options);
+   function onSuccess(position)
+    {
+      alert('Latitude: '          + position.coords.latitude          + '\n' +
+         'Longitude: '         + position.coords.longitude         + '\n' +
+         'Timestamp: '         + position.timestamp                + '\n');
+   };
+
+   function onError(error) {
+      alert('code: '    + error.code    + '\n' + 'message: ' + error.message + '\n');
+   }
+}
     }
+
 };
