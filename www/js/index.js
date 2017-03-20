@@ -55,6 +55,13 @@ function getPosition()
    var watchID = navigator.geolocation.getCurrentPosition(onSuccess, onError, options);
    function onSuccess(position)
     {
+        function myMap() {
+var mapProp= {
+    center:new google.maps.LatLng(position.coords.latitude+','+position.coords.longitude),
+    zoom:5,
+};
+var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
+}
       alert('Latitude: '          + position.coords.latitude          + '\n' +
          'Longitude: '         + position.coords.longitude         + '\n' +
          'Timestamp: '         + position.timestamp                + '\n');
