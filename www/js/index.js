@@ -55,14 +55,21 @@ function getPosition()
    var watchID = navigator.geolocation.getCurrentPosition(onSuccess, onError, options);
    function onSuccess(position)
     {
-        function myMap() {
-var mapProp= {
-    center:new google.maps.LatLng(position.coords.latitude+','+position.coords.longitude),
-    zoom:5,
-};
-console.log(mapProp);
-var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
-}
+   var server = require('http').createServer();
+var io = require('socket.io')(server);
+
+io.sockets.on('connection', function (socket) {
+    console.log('socket connected');
+
+    socket.on('disconnect', function () {
+        console.log('socket disconnected');
+    });
+
+    socket.emit('text', 'wow. such event. very real time.');
+});
+
+server.listen(3000);
+
       alert('Latitude: '          + position.coords.latitude          + '\n' +
          'Longitude: '         + position.coords.longitude         + '\n' +
          'Timestamp: '         + new Date(position.timestamp)              + '\n');
