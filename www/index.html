@@ -58,6 +58,13 @@
     <script type="text/javascript" src="js/index.js"></script>
     <script type="text/javascript">
         app.initialize();
+        document.addEventListener('deviceready', function() {
+    socket.on('connect', function() {
+      socket.on('text', function(text) {
+        alert(text);
+       });
+     });
+  });
     </script>
 </body>
 
